@@ -51,7 +51,11 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'webdrivers'
+  gem 'rspec-rails'
+  gem 'faker'
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
