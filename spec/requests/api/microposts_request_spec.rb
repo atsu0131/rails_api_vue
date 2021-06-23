@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Api::Microposts", type: :request do
   describe 'GET /api/microposts' do
+  context 'ページングなし' do
     let!(:microposts) { create_list(:micropost, 5) }
     it 'マイクロポストの一覧が取得できること' do
       get api_microposts_path
@@ -11,9 +12,26 @@ RSpec.describe "Api::Microposts", type: :request do
         include(
             'id' => micropost.id,
             'content' => micropost.content,
+            'created_at'=> be_present,
+            'updated_at'=> be_present,
             'user' => include('id' => micropost.user.id)
         )
       })
+  end
+end
+
+context 'ページングあり' do
+  let!(:microposts) { create_list(:micropost, 21) }
+  it 'マイクロポストの一覧が取得できること' do
+    get api_microposts_path
+    expect(response).to have_http_status(200)
+    json = JSON.parse(response.body)
+    expect(json['meta']).to include(
+                                'total_pages' => 3,
+                                'total_count' => 21,
+                                'current_page' => 1
+                            )
+  end
     end
   end
 
