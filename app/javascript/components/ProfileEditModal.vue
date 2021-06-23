@@ -9,10 +9,10 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-                <v-text-field  v-if="dataReady" label="Name" required v-model="user.name"></v-text-field>
+                <v-text-field label="Name" required v-model="user.name"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-textarea v-if="dataReady" label="Introduction" v-model="user.introduction"></v-textarea>
+                <v-textarea label="Introduction" v-model="user.introduction"></v-textarea>
               </v-col>
             </v-row>
           </v-container>
@@ -33,15 +33,14 @@
         data() {
             return {
                 dialog: false,
-                user: null,
-								dataReady: false
+                user: null
             }
         },
         created() {
-            this._user = { ...this.$store.getters['auth/currentUser']}
+            this.user = { ...this.$store.getters['auth/currentUser']}
         },
         methods: {
-					  open() {
+            open() {
                 this.dialog = true;
             },
             close() {

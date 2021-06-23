@@ -49,6 +49,7 @@
         },
         created() {
             this.fetchMicropost()
+
         },
         computed: {
             micropostId() {
@@ -56,6 +57,7 @@
             },
             isMine() {
                 if(!this.$store.getters['auth/currentUser']) return false
+
                 return this.micropost.user.id == this.$store.getters['auth/currentUser'].id
             }
         },

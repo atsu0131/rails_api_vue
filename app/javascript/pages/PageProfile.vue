@@ -87,6 +87,7 @@
   import axios from 'axios'
   import ProfileEditModal from "../components/ProfileEditModal";
   import AvatarUpload from "../components/AvatarUpload";
+
   export default {
       data() {
           return {
@@ -110,6 +111,7 @@
       },
       async created() {
           if (this.isMe) return
+
           const res = await axios.get(`/api/users/${this.userId}`)
           this.targetUser = res.data.user
       },

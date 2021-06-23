@@ -14,7 +14,6 @@
             </v-col>
         </v-row>
     </v-container>
-</template> 
 </template>
 <script>
     import MicropostForm from '@/components/MicropostForm'
@@ -34,6 +33,7 @@
             isExistMicroposts() {
                 return this.microposts.length > 0
             }
+
         },
         created() {
             this.fetchMicroposts()
@@ -54,4 +54,4 @@
             }
         }
     }
-</script> 
+</script>
