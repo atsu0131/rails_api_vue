@@ -55,6 +55,7 @@
             isValid() {
                 return this.micropostContent.length > 0 && this.micropostContent.length <= 140
             }
+
         },
         methods: {
             open() {

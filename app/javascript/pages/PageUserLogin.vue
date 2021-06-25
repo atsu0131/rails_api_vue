@@ -10,41 +10,42 @@
                     md="6">
                 <v-card class="elevation-12">
                     <v-card-text>
+
                         <v-form
-                            ref="form"
-                            lazy-validation
-                    >
-                        <v-text-field
-                                v-model="email"
-                                :rules="emailRules"
-                                label="E-mail"
-                                required
-                                prepend-icon="mdi-email"
-                        ></v-text-field>
-                        <v-text-field
-                                v-model="password"
-                                :rules="passwordRules"
-                                label="Password"
-                                required
-                                prepend-icon="mdi-lock"
-                                type="password"
-                        ></v-text-field>
-                    </v-form>
-                </v-card-text>
-                <v-card-actions>
-                    <router-link to="/signup" class="text-decoration-none caption">ユーザー登録ページへ</router-link>
-                    <v-spacer></v-spacer>
-                    <v-btn dark color="indigo" @click="login">ログイン</v-btn>
-                </v-card-actions>
+                                ref="form"
+                                lazy-validation
+                        >
+                            <v-text-field
+                                    v-model="email"
+                                    :rules="emailRules"
+                                    label="E-mail"
+                                    required
+                                    prepend-icon="mdi-email"
+                            ></v-text-field>
+
+                            <v-text-field
+                                    v-model="password"
+                                    :rules="passwordRules"
+                                    label="Password"
+                                    required
+                                    prepend-icon="mdi-lock"
+                                    type="password"
+                            ></v-text-field>
+                        </v-form>
+                    </v-card-text>
+
+                    <v-card-actions>
+                        <router-link to="/signup" class="text-decoration-none caption">ユーザー登録ページへ</router-link>
+                        <v-spacer></v-spacer>
+                        <v-btn dark color="indigo" @click="login">ログイン</v-btn>
+                    </v-card-actions>
                 </v-card>
             </v-col>
         </v-row>
     </v-container>
-    </div>
 </template>
 
 <script>
-    import axios from 'axios'
     export default {
         data: () => ({
             email: '',
@@ -63,6 +64,7 @@
                 ]
             },
         },
+
         methods: {
             async login() {
                 if(this.$refs.form.validate()) {

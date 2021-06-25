@@ -10,12 +10,28 @@
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>ホーム</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+                <v-list-item to="/users" link>
+          <v-list-item-action>
+            <v-icon>mdi-account-group</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>ユーザー</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item to="/profile" link v-if="$store.getters['auth/currentUser']">
+          <v-list-item-action>
+            <v-icon>mdi-account</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>プロフィール</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link v-if="$store.getters['auth/currentUser']">
           <v-list-item-action>
-            <v-icon>mdi-account</v-icon>
+            <v-icon>mdi-logout</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title @click="logout">ログアウト</v-list-item-title>
@@ -31,6 +47,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+
     <v-app-bar
             app
             color="indigo"
@@ -39,8 +56,9 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar>
+
     <v-main>
-    <router-view></router-view>
+      <router-view></router-view>
     </v-main>
     <v-footer
             color="indigo"
@@ -50,6 +68,7 @@
     </v-footer>
   </v-app>
 </template>
+
 <script>
   export default {
     props: {
