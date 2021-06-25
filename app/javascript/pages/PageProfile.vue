@@ -1,3 +1,4 @@
+
 <template>
   <v-container>
     <v-row>
@@ -75,8 +76,31 @@
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
+
+            <v-divider inset></v-divider>
+
+            <v-list-item @click="">
+              <v-list-item-icon>
+                <v-icon color="indigo">mdi-music-accidental-sharp</v-icon>
+              </v-list-item-icon>
+
+              <v-list-item-content>
+                <v-list-item-title>
+                  <v-chip
+                          class="ma-1"
+                          color="orange"
+                          text-color="white"
+                          small
+                          v-for="tag in user.tags" :key="tag.name"
+                  >
+                    <v-icon left class="mr-0">mdi-music-accidental-sharp</v-icon>
+                    {{tag.name}}
+                  </v-chip>
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
           </v-list>
-          <profile-edit-modal ref="dialog"></profile-edit-modal>
+          <profile-edit-modal v-if="isMe" ref="dialog"></profile-edit-modal>
         </v-card>
       </v-col>
     </v-row>
@@ -87,7 +111,6 @@
   import axios from 'axios'
   import ProfileEditModal from "../components/ProfileEditModal";
   import AvatarUpload from "../components/AvatarUpload";
-
   export default {
       data() {
           return {
@@ -111,7 +134,6 @@
       },
       async created() {
           if (this.isMe) return
-
           const res = await axios.get(`/api/users/${this.userId}`)
           this.targetUser = res.data.user
       },
