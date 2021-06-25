@@ -8,6 +8,7 @@
     "@rails/webpacker": "4.3.0",
     "axios": "^0.21.1",
     "dayjs": "^1.10.5",
+    "qs": "^6.10.1",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.12",
     "vue-image-crop-upload": "^3.0.3",
